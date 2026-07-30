@@ -69,8 +69,8 @@ table {
 div#compare {
     position: absolute;
     display: none;
-    width: 50vw;
-    max-width: 800px;
+    width: fit-content;
+    max-width: 1050px;
     min-width: 400px;
     height: 80vh;
     max-height: 700px;

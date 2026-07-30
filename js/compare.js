@@ -42,8 +42,8 @@ function SetCarToCompare(el, carClass) {
         if(el.checked){
             carArr.push(carClass);
         } else {
-            let carPosition = GetCarArrPosition(carArr, carClass)
-            carArr.pop(carPosition);
+            let carIndex = GetCarArrPosition(carArr, carClass)
+            carArr.splice(carIndex, 1);
         } 
     } else {
         throw "You need set a Car Class";
@@ -73,7 +73,6 @@ function HideCompare(){
 
 function UpdateCompareTable() {
     let compare_table = document.querySelector(".compare-table");
-    console.log(carArr);
 
     const celulas = compare_table.querySelectorAll('tr');
 
