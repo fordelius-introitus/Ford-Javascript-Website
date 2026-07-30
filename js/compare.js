@@ -3,10 +3,28 @@
 let carArr = [];
 
 class Car {
-   
-
     constructor(nome, preco, alturaCacamba, alturaVeiculo, alturaSolo, capacidadeCarga, motor, potencia, volumeCacamba, roda, image){
-       
+        this.nome = nome; 
+        this.preco = preco;
+        this.alturaCacamba = alturaCacamba; 
+        this.alturaVeiculo = alturaVeiculo;
+        this.alturaSolo = alturaSolo; 
+        this.capacidadeCarga = capacidadeCarga;
+        this.motor = motor; 
+        this.potencia = potencia;
+        this.volumeCacamba = volumeCacamba; 
+        this.roda = roda;
+        this.image = image;
+    }
+
+    getCarInfo() {
+        let preco = "R$ " + new Intl.NumberFormat().format(this.preco);
+
+        let car_info = [this.image, this.nome, this.alturaCacamba, this.alturaVeiculo,this.alturaSolo,
+                this.capacidadeCarga, this.motor, this.potencia, this.volumeCacamba, this.roda, preco
+        ];
+
+        return car_info;
     }
 } 
 
@@ -20,13 +38,12 @@ function GetCarArrPosition(arr, carClass) {
 }
 
 function SetCarToCompare(el, carClass) {
-   
     if(carClass instanceof Car){       
         if(el.checked){
-                
-            
+            carArr.push(carClass);
         } else {
-          
+            let carPosition = GetCarArrPosition(carArr, carClass)
+            carArr.pop(carPosition);
         } 
     } else {
         throw "You need set a Car Class";
@@ -39,14 +56,44 @@ function ShowCompare() {
         return;
     }
 
+    if(carArr.length >= 3) {
+        alert("Desmarque um carro para apresentar a comparação");
+        return;
+    }
+
     UpdateCompareTable();
     document.getElementById("compare").style.display = "block";
 }
 
 function HideCompare(){
     document.getElementById("compare").style.display = "none"; 
+
+
 }
 
 function UpdateCompareTable() {
-    
+    let compare_table = document.querySelector(".compare-table");
+    console.log(carArr);
+
+    const celulas = compare_table.querySelectorAll('tr');
+
+    for(let i = 0; i < celulas.length; i++) {
+        let table_cell = celulas[i].querySelectorAll('td');
+
+        for(let j = 0; j < carArr.length; j++) {
+            let car_info = carArr[j].getCarInfo();
+
+            if(i == 0) {
+                let images = table_cell[j+1].querySelectorAll('img');
+                let current_image = images[i];
+
+                current_image.src = car_info[i];
+                current_image.width = 250; 
+                current_image.height = 150; 
+                continue;
+            }
+
+            table_cell[j+1].textContent = car_info[i];
+        }
+    }
 }

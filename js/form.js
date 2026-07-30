@@ -14,7 +14,7 @@ class contato {
 }
 
 function Post(form) {
-    event.preventDefault(); // Evita o reload da página
+    event.preventDefault(); // avoids reloading the page upon submitting form
 
     let data = new contato(
             form.elements.namedItem("nome").value,
