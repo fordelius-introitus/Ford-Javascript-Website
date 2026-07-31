@@ -20,11 +20,9 @@ class Car {
     getCarInfo() {
         let preco = "R$ " + new Intl.NumberFormat().format(this.preco);
 
-        let car_info = [this.image, this.nome, this.alturaCacamba, this.alturaVeiculo,this.alturaSolo,
+        return [this.image, this.nome, this.alturaCacamba, this.alturaVeiculo,this.alturaSolo,
                 this.capacidadeCarga, this.motor, this.potencia, this.volumeCacamba, this.roda, preco
         ];
-
-        return car_info;
     }
 } 
 
@@ -74,10 +72,10 @@ function HideCompare(){
 function UpdateCompareTable() {
     let compare_table = document.querySelector(".compare-table");
 
-    const celulas = compare_table.querySelectorAll('tr');
+    const row = compare_table.querySelectorAll('tr');
 
-    for(let i = 0; i < celulas.length; i++) {
-        let table_cell = celulas[i].querySelectorAll('td');
+    for(let i = 0; i < row.length; i++) {
+        let table_cell = row[i].querySelectorAll('td');
 
         for(let j = 0; j < carArr.length; j++) {
             let car_info = carArr[j].getCarInfo();
