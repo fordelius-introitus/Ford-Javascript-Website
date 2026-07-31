@@ -7,7 +7,6 @@
     <title>Ford</title>    
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="js/carousel.js"></script>
 </head>
 <body>
     <header>       
@@ -31,16 +30,19 @@
     </header>
     <main>
         <div id="carousel">
+            <a id="carousel-href" href=""><img src="" id="carousel-image"></a>
         </div>
+
+        <div class="slide-animation"></div>
         <div id="carousel-title">
+            <h5 id="carousel-text"></h5>
+
+            <div class="button-wrapper">
+                <button class="carousel-button" id="0" onclick="Carousel.ChangeImage(this.id)"></button>
+                <button class="carousel-button" id="1" onclick="Carousel.ChangeImage(this.id)"></button>
+                <button class="carousel-button" id="2" onclick="Carousel.ChangeImage(this.id)"></button>
+            </div>
         </div>
-        <script>
-             //insert each image on carousel
-            carouselArr.push(new Carousel("imagem_1.jpg","Esta é a nova Ranger Ford 2022. Verifique novidades.","lancamento.html"));
-            carouselArr.push(new Carousel("imagem_2.jpg","Ford a nossa história","#"));
-            carouselArr.push(new Carousel("imagem_3.jpg","Nova Ford Bronco Sport 2022","lancamento.html"));
-            Carousel.Start(carouselArr);
-        </script>
     </main>
     <footer>
         <nav id="social">
@@ -54,6 +56,14 @@
         <div>
            <img src="img/ford-96.png" width="70"  />
         </div>
-    </footer>    
+    </footer>
+    <script src="js/carousel.js"></script>
+    <script>
+             //insert each image on carousel
+            carouselArr.push(new Carousel("img/imagem_1.jpg","Esta é a nova Ranger Ford 2022. Verifique novidades.","lancamento.html"));
+            carouselArr.push(new Carousel("img/imagem_2.jpg","Ford a nossa história","#"));
+            carouselArr.push(new Carousel("img/imagem_3.jpg","Nova Ford Bronco Sport 2022","lancamento.html"));
+            Carousel.Start(carouselArr);
+        </script>
 </body>
 </html>

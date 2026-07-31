@@ -65,8 +65,6 @@ function ShowCompare() {
 
 function HideCompare(){
     document.getElementById("compare").style.display = "none"; 
-
-
 }
 
 function UpdateCompareTable() {
