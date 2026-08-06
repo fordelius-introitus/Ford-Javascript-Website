@@ -25,6 +25,15 @@ class Carousel {
     }
       
     static Start(){
+        // for each image, creates a button
+        carouselArr.forEach((item, index) => {
+            let button = document.createElement("button");
+            button.style.backgroundColor = "rgb(100, 100, 100)"
+            button.id = `${index + 1}`;
+            button.addEventListener('click', () => this.ChangeImage(index));
+            buttonWrapper.appendChild(button);
+        });
+
         if(carouselArr){
             if(carouselArr.length > 0){
                 Carousel._sequence = 0;
@@ -34,7 +43,7 @@ class Carousel {
                 Carousel._interval = setInterval(function(){
                      Carousel.Next(); Carousel._sequence++;
                      if(Carousel._sequence == carouselArr.length) Carousel._sequence = 0;
-                    }, 3000);
+                    }, 2000);
             }
         } else {
             throw "Method Start need a Array Variable.";
@@ -42,29 +51,35 @@ class Carousel {
     }
 
     static ResetButtonColors() {
-        for(let i = 0; i < 3; i++) {
+        const buttons = buttonWrapper.querySelectorAll("button");
+
+        for(let i = 0; i < buttons.length; i++) {
             buttons[i].style.backgroundColor = "rgb(100, 100, 100)"
         }
     }
 
     static Next(){
-        carousel_img.src = carouselArr[Carousel._sequence].imagem;
+        const buttons = buttonWrapper.querySelectorAll("button");
+
         carousel_text.textContent = carouselArr[Carousel._sequence].descricao;
-        carousel_href.href = carouselArr[Carousel._sequence].pagina;
+        carousel_img.setAttribute('src', carouselArr[Carousel._sequence].imagem);
+        carousel_href.setAttribute('href', carouselArr[Carousel._sequence].pagina);
 
         this.ResetButtonColors();
-        buttons[Carousel._sequence].style.backgroundColor = "rgb(214, 214, 214)"
+        buttons[Carousel._sequence].style.backgroundColor = "rgb(27, 91, 209)"
     }
     
     // particularly for buttons
     static ChangeImage(index) {
+        const buttons = buttonWrapper.querySelectorAll("button");
+
         Carousel._sequence = index;
 
-        carousel_img.src = carouselArr[index].imagem;
         carousel_text.textContent = carouselArr[index].descricao;
-        carousel_href.href = carouselArr[index].pagina;
+        carousel_img.setAttribute('src', carouselArr[Carousel._sequence].imagem);
+        carousel_href.setAttribute('href', carouselArr[Carousel._sequence].pagina);
 
         this.ResetButtonColors();
-        buttons[Carousel._sequence].style.backgroundColor = "rgb(214, 214, 214)"
+        buttons[Carousel._sequence].style.backgroundColor = "rgb(27, 91, 209)"
     }
 };

@@ -31,18 +31,15 @@ div.button-wrapper {
     padding: 20px 10px;
 }
 
-@keyframes slide {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-.slide-animation {
-    animation: slide 0.8s ease-in-out;
+div.button-wrapper button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(100, 100, 100);
+    width: 10px;
+    height: 12px;
+
+    border-radius: 50%;
 }
 
 button.carousel-button {
@@ -57,7 +54,7 @@ button.carousel-button {
 }
 
 button.carousel-button:hover {
-    background-color: rgb(214, 214, 214);
+    background-color: rgb(87, 115, 207);
 }
 
 div#carousel-title a {
